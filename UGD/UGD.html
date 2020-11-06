@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unguided</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>Masukkan Angka :</p>
+        <input type="number" v-model="userInput" />
+        <p>Random Number = {{randomNumber}}</p>
+        <p><button @click="check()">Tebak Angka</button></p>
+        <b>{{ check() }}</b>
+        <br>{{mhs.nama}} | {{ mhs.npm }}  | {{ mhs.kelas }}
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            mhs:{
+                nama: 'David Hansandi Yinarto',
+                npm : '180709622',
+                kelas: 'A',
+            },
+            randomNumber: '',
+            userInput: '',
+        },
+
+        methods: {
+            generateAngka: function() {
+                this.randomNumber = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+            },
+            check: function() {
+                this.generateAngka()
+                if (this.userInput == this.randomNumber) {
+                    return 'Jawaban Anda Benar';
+                } else {
+                    return 'Jawaban Anda Salah';
+                }
+            }
+        }
+    });
+</script>
+</html>
